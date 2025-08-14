@@ -20,10 +20,6 @@ const PlantSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    imageURL: {
-        type: String,
-        required: [true, 'Image URL is required']
-    },
 },
 {
     timestamps: true
