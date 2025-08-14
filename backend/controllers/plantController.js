@@ -2,8 +2,8 @@ const Plant = require ('../models/Plant');
 
 const addPlant = async (req, res) => {
     try {
-        const { name, category, price, description, imageURL } = req.body;
-        if (!name || !category || !price || !imageURL) {
+        const { name, category, price, description } = req.body;
+        if (!name || !category || !price) {
             return res.status(400).json({ message: 'All fields are required' });
         }
         if (typeof price !== 'number' || price < 0) {
@@ -14,7 +14,7 @@ const addPlant = async (req, res) => {
             return res.status(400).json({ message: 'Plant with this name already exists' });
         }
 
-        const plant = await Plant.create({ name, category, price, description, imageURL });
+        const plant = await Plant.create({ name, category, price, description });
         res.status(201).json(plant);
     }
     catch (error) {
