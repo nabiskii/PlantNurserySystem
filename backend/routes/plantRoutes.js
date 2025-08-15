@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { addPlant, getPlants, getPlantById, updatePlant, deletePlant } = require('../controllers/plantController');
 
-const { protect, isAdmin } = require('../middleware/authMiddleware');
+const { protect } = require('../middleware/authMiddleware');
 
 // Routes for Plant operations
 router.post('/', protect, addPlant); // Add a new plant
