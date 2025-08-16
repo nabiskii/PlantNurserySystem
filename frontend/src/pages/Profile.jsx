@@ -56,9 +56,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-20">
-      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded">
-        <h1 className="text-2xl font-bold mb-4 text-center">Your Profile</h1>
+    <div className="profile-page">
+      <form onSubmit={handleSubmit} className="form-container">
+        <h1 className="form-title">Your Profile</h1>
         <input
           type="text"
           placeholder="Name"

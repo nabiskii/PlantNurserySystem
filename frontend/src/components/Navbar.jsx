@@ -11,29 +11,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">Plants</Link>
-      <div>
+    <nav className="navbar">
+      <Link to="/" className="navbar-brand">Dashboard</Link>
+      <div className="navbar-right">
         {user ? (
           <>
-            <Link to="/plants" className="mr-4">CRUD</Link>
-            <Link to="/profile" className="mr-4">Profile</Link>
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 px-4 py-2 rounded hover:bg-red-700"
-            >
-              Logout
-            </button>
+            <Link to="/plants" className="nav-link">Plants CRUD</Link>
+            <Link to="/employees" className="nav-link">Employees CRUD</Link>
+            <Link to="/profile" className="nav-link">Profile</Link>
+            <button onClick={handleLogout} className="btn btn-logout">Logout</button>
           </>
         ) : (
           <>
-            <Link to="/login" className="mr-4">Login</Link>
-            <Link
-              to="/register"
-              className="bg-green-500 px-4 py-2 rounded hover:bg-green-700"
-            >
-              Register
-            </Link>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/register" className="btn btn-register">Register</Link>
           </>
         )}
       </div>

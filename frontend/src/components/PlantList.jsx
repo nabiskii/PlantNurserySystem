@@ -40,23 +40,23 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
   if (loading) return <div className="text-center">Loading plants...</div>;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="card-grid">
       {plants.map((p) => (
-        <div key={p._id} className="border rounded p-4 flex flex-col gap-2">
-          <div className="font-bold">{p.name}</div>
-          <div className="text-sm">
+        <div key={p._id} className="card">
+          <div className="card-title">{p.name}</div>
+          <div className="card-text">
             {p.category} • ${p.price} • Stock: {p.stockQuantity}
           </div>
-          <div className="text-sm opacity-80">{p.description}</div>
-          <div className="flex gap-2 mt-2">
+          <div className="card-text">{p.description}</div>
+          <div className="card-actions">
             <button
-              className="px-3 py-1 rounded bg-blue-600 text-white"
+              className="btn btn-register"
               onClick={() => onEdit(p)}
             >
               Edit
             </button>
             <button
-              className="px-3 py-1 rounded bg-red-600 text-white"
+              className="btn btn-logout"
               onClick={() => remove(p._id)}
             >
               Delete
