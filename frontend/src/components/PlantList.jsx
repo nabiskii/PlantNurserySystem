@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle, useCallback } from 'react';
 import axiosInstance from '../axiosConfig';
 import { useMessage } from '../context/MessageContext';
 
@@ -7,7 +7,7 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
   const [loading, setLoading] = useState(true);
   const { showMessage } = useMessage();
 
-  const fetchPlants = async () => {
+  const fetchPlants = useCallback(async () => {
     try {
       const { data } = await axiosInstance.get("/api/plants");
       setPlants(data);
@@ -16,7 +16,7 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [showMessage]);
 
   useEffect(() => {
     fetchPlants();
@@ -30,8 +30,8 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
     if (!window.confirm("Are you sure you want to delete this plant?")) return;
     try {
       await axiosInstance.delete(`/api/plants/${id}`);
-      setPlants(plants.filter(p => p._id !== id));
       showMessage("success", "Plant deleted successfully!");
+      await fetchPlants();
     } catch (err) {
       showMessage("error", err.response?.data?.message || "Failed to delete plant");
     }
@@ -49,8 +49,18 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
           </div>
           <div className="text-sm opacity-80">{p.description}</div>
           <div className="flex gap-2 mt-2">
-            <button className="px-3 py-1 rounded bg-blue-600 text-white" onClick={() => onEdit(p)}>Edit</button>
-            <button className="px-3 py-1 rounded bg-red-600 text-white" onClick={() => remove(p._id)}>Delete</button>
+            <button
+              className="px-3 py-1 rounded bg-blue-600 text-white"
+              onClick={() => onEdit(p)}
+            >
+              Edit
+            </button>
+            <button
+              className="px-3 py-1 rounded bg-red-600 text-white"
+              onClick={() => remove(p._id)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       ))}
