@@ -20,7 +20,7 @@ const PlantList = forwardRef(({ onEdit }, ref) => {
 
   useEffect(() => {
     fetchPlants();
-  }, []);
+  }, [fetchPlants]);
 
   useImperativeHandle(ref, () => ({
     fetchPlants,
