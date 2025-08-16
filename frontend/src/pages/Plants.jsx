@@ -13,7 +13,7 @@ export default function PlantsPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4 grid md:grid-cols-[1fr_1fr] gap-6">
+    <div className="max-w-6xl mx-auto p-4 grid md:grid-cols-[1fr_1fr] gap-6">
       <PlantForm editing={editing} onDone={handleDone} />
       <PlantList ref={plantListRef} onEdit={setEditing} />
     </div>

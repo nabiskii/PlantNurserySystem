@@ -40,26 +40,26 @@ const EmployeeList = forwardRef(({ onEdit }, ref) => {
   if (loading) return <div className="text-center">Loading employees...</div>;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="card-grid">
       {employees.map((e) => (
-        <div key={e._id} className="border rounded p-4 flex flex-col gap-2">
-          <div className="font-bold">{e.name}</div>
-          <div className="text-sm">
+        <div key={e._id} className="card">
+          <div className="card-title">{e.name}</div>
+          <div className="card-text">
             {e.role} • {e.department} • {e.phone}
           </div>
-          <div className="text-sm opacity-80">{e.email}</div>
-          <div className="text-sm opacity-70">
+          <div className="card-text">{e.email}</div>
+          <div className="card-text">
             Joined: {new Date(e.dateJoined).toLocaleDateString()}
           </div>
-          <div className="flex gap-2 mt-2">
+          <div className="card-actions">
             <button
-              className="px-3 py-1 rounded bg-blue-600 text-white"
+              className="btn btn-register"
               onClick={() => onEdit(e)}
             >
               Edit
             </button>
             <button
-              className="px-3 py-1 rounded bg-red-600 text-white"
+              className="btn btn-logout"
               onClick={() => removeEmployee(e._id)}
             >
               Delete

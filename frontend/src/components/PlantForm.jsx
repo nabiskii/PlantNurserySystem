@@ -73,7 +73,7 @@ const PlantForm = ({ editing, onDone }) => {
         onChange={(e) => setForm({ ...form, description: e.target.value })}
       />
 
-      <button className="bg-green-600 text-white rounded px-4 py-2">
+      <button className="btn btn-register mt-3" type="submit">
         {isEdit ? 'Save Changes' : 'Create'}
       </button>
     </form>
