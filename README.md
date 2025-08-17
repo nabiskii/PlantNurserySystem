@@ -3,6 +3,12 @@
 
 Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
 
+**Public URL:** http://3.25.226.31/
+
+Login details to access Dashboard
+Username: admin@gmail.com
+Password: admin123
+
 
 ---
 
@@ -14,6 +20,17 @@ A full-stack web application designed to streamline nursery operations, includin
 * **Requirement Diagram**, **Block Definition Diagram (**BDD), Parametric Diagram using**SysML**
 * **Version Control using GitHub**
 * **CI/CD Integration for Automated Deployment**
+
+---
+
+**Setup instructions**
+
+* git clone https://github.com/your-username/plant-nursery-system.git
+* cd plant-nursery-system
+* npm install
+* npm start
+* pm2 start "npm run start" --name="backend"
+* pm2 serve build/ 3000 --name "frontend" --spa
 
 ---
 
