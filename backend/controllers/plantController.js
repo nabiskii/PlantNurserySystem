@@ -22,6 +22,8 @@ const addPlant = async (req, res) => {
     }
 };
 
+// getting all plants
+
 const getPlants = async (req, res) => {
     try {
         const plants = await Plant.find();
